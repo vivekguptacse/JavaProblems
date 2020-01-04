@@ -27,6 +27,15 @@ public class RotateArray
 		
 		int[] rotateArray2 = rotateArray.rotateArray(new int[] {1,2,3,4,5,6}, 4);
 		System.out.println(Arrays.toString(rotateArray2));
+		
+		String str = "azacvc";
+		str = str.replaceAll("aa", "X");
+		while(str.contains("XX"))
+		{
+			str = str.replaceAll("XX", "X");
+		}
+		
+		System.out.println(str);
 				
 	}
 
