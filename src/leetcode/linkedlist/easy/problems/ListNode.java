@@ -45,11 +45,54 @@ public class ListNode
 			temp.next = node;
 			temp = temp.next;
 		}
-//		ListNode newNode = new ListNode(2);
-//		head.next = newNode;
-////		ListNode node = new ListNode(3);
-////		newNode.next = node;
 		
+		return head;
+	}
+	
+	public static ListNode createPallindromicList(int n)
+	{
+		ListNode head = null;
+		ListNode temp = head;
+		int i = 1;
+		for(; i <= n  ; i++)
+		{
+			ListNode node = new ListNode(i);
+			if(head == null)
+			{
+				head = node;
+				temp = head;
+			}
+			
+			
+			temp.next = node;
+			temp = temp.next;
+		}
+		i--;
+		while(i > 0)
+		{
+			ListNode node = new ListNode(i);
+			
+			temp.next = node;
+			temp = temp.next;
+			i--;
+		}
+		
+		return head;
+		
+	}
+	
+	public static ListNode createCustomList(int [] nums)
+	{
+		ListNode head = new ListNode(nums[0]);
+		ListNode temp = head;
+		
+		for(int i = 1; i < nums.length ; i++)
+		{
+			ListNode node = new ListNode(nums[i]);
+			
+			temp.next = node;
+			temp = temp.next;
+		}
 		
 		return head;
 	}
