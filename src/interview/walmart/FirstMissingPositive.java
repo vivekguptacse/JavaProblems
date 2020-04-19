@@ -1,4 +1,4 @@
-package leetcode.arrays.and.string.hard.problems;
+package interview.walmart;
 
 /**
  * First Missing Positive
@@ -52,9 +52,53 @@ public class FirstMissingPositive
 		return i;
 	}
 	
+	public int firstMissingPositiveOn(int [] nums)
+	{
+		int size = nums.length;
+		boolean isOnePresent = false;
+		
+		for(int i = 0 ; i < size ; i++)
+		{
+			if(nums[i] == 1)
+			{
+				isOnePresent = true;
+			}
+			else if(nums[i] <= 0 || nums[i] > size)
+			{
+				nums[i] = 1;
+			}
+		}
+		
+		if(!isOnePresent)
+		{
+			return 1;
+		}
+		
+		
+		for(int i = 0; i < size ; i++)
+		{
+			int index = Math.abs(nums[i]) - 1;
+			
+			if(nums[index] > 0)
+			{
+				nums[index] = -1 * nums[index];
+			}
+		}
+		
+		for(int i = 0 ; i < size ; i++)
+		{
+			if(nums[i] > 0)
+			{
+				return i+1;
+			}
+		}
+		
+		return size + 1;
+	}
+	
 	public static void main(String[] args)
 	{
 		FirstMissingPositive firstMissingPositive = new FirstMissingPositive();
-		System.out.println(firstMissingPositive.firstMissingPositive(new int[] {1}));
+		System.out.println(firstMissingPositive.firstMissingPositiveOn(new int[] {7,8,9,5,6,3,4,2,1,0}));
 	}
 }
